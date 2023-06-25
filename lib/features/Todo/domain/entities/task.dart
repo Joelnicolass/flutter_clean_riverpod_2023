@@ -4,9 +4,9 @@ class Task {
   final String description;
   final String image;
   final bool isDone;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final DateTime deletedAt;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final DateTime? deletedAt;
 
   Task({
     required this.id,
@@ -14,8 +14,8 @@ class Task {
     required this.description,
     required this.image,
     required this.isDone,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.deletedAt,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
   });
 }

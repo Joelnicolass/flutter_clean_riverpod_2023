@@ -1,35 +1,20 @@
-class DataStorage {
-  String id;
-  dynamic data;
-
-  DataStorage({required this.id, required this.data});
-}
-
 class LocalDataBase {
-  static final List<DataStorage> _states = [];
+  static final List<Map<String, dynamic>> _data = [];
 
-  static void addState(DataStorage state) {
-    _states.add(state);
+  static Future<void> add(Map<String, dynamic> data) async {
+    _data.add(data);
   }
 
-  static void removeState(String id) {
-    _states.removeWhere((element) => element.id == id);
+  static Future<List<Map<String, dynamic>>> get() async {
+    return _data;
   }
 
-  static void updateState(DataStorage state) {
-    _states.removeWhere((element) => element.id == state.id);
-    _states.add(state);
+  static Future<void> delete(String id) async {
+    _data.removeWhere((element) => element['id'] == id);
   }
 
-  static DataStorage getState(String id) {
-    return _states.firstWhere((element) => element.id == id);
-  }
-
-  static List<DataStorage> getStates() {
-    return _states;
-  }
-
-  static void clear() {
-    _states.clear();
+  static Future<void> edit(Map<String, dynamic> data) async {
+    _data.removeWhere((element) => element['id'] == data['id']);
+    _data.add(data);
   }
 }
