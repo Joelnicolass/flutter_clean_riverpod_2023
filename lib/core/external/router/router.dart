@@ -7,7 +7,7 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       name: TodoScreen.name,
-      builder: (context, state) => const TodoScreen(),
+      builder: (context, state) => const HomeScreen(),
     ),
   ],
 );
